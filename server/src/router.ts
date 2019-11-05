@@ -1,5 +1,7 @@
 import express from 'express';
 
+import { HandledError } from './errors';
+
 export const router = express.Router();
 
 router.get('/', (request: express.Request, response: express.Response) => {
@@ -18,6 +20,6 @@ router.get(
 router.get(
   '/handlederror',
   (request: express.Request, response: express.Response) => {
-    throw { status: 400, message: 'This is a handled error' };
+    throw new HandledError('This is a handled error');
   },
 );

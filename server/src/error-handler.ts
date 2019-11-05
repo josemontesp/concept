@@ -1,18 +1,20 @@
 import express from 'express';
 
+import { HandledError } from './errors';
+
 export function errorHandler(
-  err: Error & { status: number },
+  error: Error | HandledError,
   request: express.Request,
   response: express.Response,
   next: express.NextFunction,
 ) {
-  if (err.status) {
-    response.status(err.status || 500);
+  if (error instanceof HandledError) {
+    response.status(error.status || 500);
     response.json({
-      error: err.message || 'Server error',
+      error: error.message || 'Server error',
     });
   } else {
-    console.error(err);
+    console.error(error);
     response.status(500);
     response.json({
       error: 'Unexpected Server error',
