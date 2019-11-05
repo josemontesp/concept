@@ -16,9 +16,19 @@ app.get('/', (request: express.Request, response: express.Response) => {
   });
 });
 
-app.get('/jose', (request: express.Request, response: express.Response) => {
-  throw new Error('a bad error here');
-});
+app.get(
+  '/unhandlederror',
+  (request: express.Request, response: express.Response) => {
+    (undefined as any).unexistingProperty = '123';
+  },
+);
+
+app.get(
+  '/handlederror',
+  (request: express.Request, response: express.Response) => {
+    throw { status: 400, message: 'This is a handled error' };
+  },
+);
 
 app.use(
   (
@@ -27,9 +37,17 @@ app.use(
     response: express.Response,
     next: express.NextFunction,
   ) => {
-    response.status(err.status || 500);
-    response.json({
-      error: err.message || 'Server error',
-    });
+    if (err.status) {
+      response.status(err.status || 500);
+      response.json({
+        error: err.message || 'Server error',
+      });
+    } else {
+      console.error(err);
+      response.status( 500);
+      response.json({
+        error: 'Unexpected Server error',
+      });
+    }
   },
 );

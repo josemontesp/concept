@@ -10,10 +10,8 @@ provider:
   profile: Jose
   stage: prod
   region: us-east-1
-
-# you can define service wide environment variables here
-#  environment:
-#    variable1: value1
+  environment: # add environment property
+    NODE_ENV: PROD
 
 # you can add packaging information here
 package:
@@ -27,11 +25,7 @@ functions:
     events:
       - http:
           path: /
-          method: get
+          method: ANY
       - http:
           path: /{any+}
-          method: get
-#    Define function environment variables here
-#    environment:
-#      variable2: value2
-
+          method: ANY

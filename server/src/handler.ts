@@ -1,3 +1,5 @@
+import 'source-map-support/register';
+
 import { APIGatewayEvent, Context } from 'aws-lambda';
 import serverlessExpress from 'aws-serverless-express';
 
