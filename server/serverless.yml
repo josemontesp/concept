@@ -20,11 +20,11 @@ package:
   exclude:
     - node_modules/**/*
   include:
-    - handler.ts
+    - src/**/*
 
 functions:
   main:
-    handler: handler.main
+    handler: src/handler.main
     events:
       - http:
           path: /
