@@ -1,6 +1,8 @@
 import { json, urlencoded } from 'body-parser';
 import express from 'express';
 
+import { errorHandler } from './error-handler';
+
 export const app = express();
 
 app.use(json());
@@ -30,24 +32,4 @@ app.get(
   },
 );
 
-app.use(
-  (
-    err: Error & { status: number },
-    request: express.Request,
-    response: express.Response,
-    next: express.NextFunction,
-  ) => {
-    if (err.status) {
-      response.status(err.status || 500);
-      response.json({
-        error: err.message || 'Server error',
-      });
-    } else {
-      console.error(err);
-      response.status( 500);
-      response.json({
-        error: 'Unexpected Server error',
-      });
-    }
-  },
-);
+app.use(errorHandler);
