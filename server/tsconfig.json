@@ -64,5 +64,7 @@
     "preserveConstEnums": true,
     "suppressImplicitAnyIndexErrors": true,
     "forceConsistentCasingInFileNames": true
-  }
+  },
+  "exclude": ["node_modules", "build", "webpack"],
+  "types": ["typePatches"]
 }
