@@ -4,9 +4,9 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Debug Main Function",
+      "name": "Debug Concept API",
       "program": "${workspaceFolder}/server/node_modules/.bin/sls",
-      "args": ["invoke", "local", "-f", "main", "--data", "{}"],
+      "args": ["offline", "start"],
       "cwd": "${workspaceFolder}/server/"
     }
   ]
