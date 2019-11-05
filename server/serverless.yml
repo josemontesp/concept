@@ -1,0 +1,38 @@
+service: concept-api
+
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  profile: Jose
+  stage: prod
+  region: us-east-1
+
+# you can define service wide environment variables here
+#  environment:
+#    variable1: value1
+
+# you can add packaging information here
+package:
+  exclude:
+    - node_modules/**/*
+  include:
+    - handler.ts
+
+functions:
+  main:
+    handler: handler.main
+    events:
+      - http:
+          path: /
+          method: get
+      - http:
+          path: /{any+}
+          method: get
+#    Define function environment variables here
+#    environment:
+#      variable2: value2
+
