@@ -5,10 +5,10 @@ import { BaseController } from './base.controller';
 
 export class BookController extends BaseController {
   async get(request: express.Request) {
-    return new BookModel();
+    return BookModel.find();
   }
   async post(request: express.Request) {
-    return new BookModel();
+    return new BookModel().save();
   }
   async put(request: express.Request) {}
   async delete(request: express.Request) {}
