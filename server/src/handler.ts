@@ -8,5 +8,6 @@ import { app } from './app';
 const server = serverlessExpress.createServer(app);
 
 export function main(event: APIGatewayEvent, context: Context) {
-  serverlessExpress.proxy(server, event, context);
+  context.callbackWaitsForEmptyEventLoop = false;
+  return serverlessExpress.proxy(server, event, context);
 }

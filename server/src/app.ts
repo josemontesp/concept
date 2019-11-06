@@ -1,3 +1,5 @@
+import './database';
+
 import { json, urlencoded } from 'body-parser';
 import express from 'express';
 
