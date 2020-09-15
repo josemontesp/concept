@@ -18,6 +18,8 @@ export function errorHandler(
     response.status(500);
     response.json({
       error: 'Unexpected Server error',
+      message: error.message,
+      stack: error.stack,
     });
   }
 }
