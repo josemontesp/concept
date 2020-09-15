@@ -6,7 +6,7 @@ plugins:
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs12.x
   profile: Jose
   stage: prod
   region: us-east-1
@@ -15,7 +15,7 @@ provider:
 
 # you can add packaging information here
 package:
-  exclude:
+  exclude: []
   include:
     - src/**/*
 

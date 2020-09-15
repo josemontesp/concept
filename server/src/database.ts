@@ -4,6 +4,11 @@ const mongoose = require('mongoose');
 
 (mongoose as any).Promise = global.Promise;
 
+mongoose.set('useNewUrlParser', true);
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+mongoose.set('useUnifiedTopology', true);
+
 if (process.env.NODE_ENV === 'testing') {
   const mockgoose = new Mockgoose(mongoose);
   mockgoose.helper.setDbVersion('3.4.3');
