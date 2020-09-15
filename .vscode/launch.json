@@ -3,6 +3,7 @@
   "configurations": [
     {
       "type": "node",
+      "runtimeVersion": "12.18.0",
       "request": "launch",
       "name": "Debug Concept API",
       "program": "${workspaceFolder}/server/node_modules/.bin/sls",
