@@ -17,7 +17,7 @@
     "@types/mongoose": "^5.7.36",
     "@types/node": "^12.12.58",
     "serverless": "^1.83.0",
-    "serverless-offline": "^5.12.1",
+    "serverless-offline": "^12.0.3",
     "serverless-plugin-typescript": "^1.1.9",
     "typescript": "^3.9.7"
   },
